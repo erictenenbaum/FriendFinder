@@ -7,4 +7,11 @@ var PORT = 3000;
 
 var port = process.env.PORT || 3000;
 
+var htmlRoutes = require("routing/htmlRouts.js");
+
+
+app.listen(port, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+
 

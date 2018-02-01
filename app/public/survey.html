@@ -14,15 +14,17 @@
     <h2>Question 1</h2>
     <p>How much do you enjoy watching sports</p>
     <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1(Strongly Disagree)</option>
+        <option disabled selected>Select an Option</option>
+        <option value="1">1 (Strongly Disagree)</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-        <option value="5">5(Strongly Agree)</option>
+        <option value="5">5 (Strongly Agree)</option>
     </select>
     <h2>Question 2</h2>
     <p>How much do you like comedy shows</p>
     <select class="chzn-select" name="faculty" style="width:200px;">
+        <option disabled selected>Select an Option</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -101,8 +103,8 @@
         <option value="4">4</option>
         <option value="5">5</option>
     </select>
-</br>
-</br>
+    </br>
+    </br>
 
     <button id="submit">Submit</button>
 
@@ -111,17 +113,17 @@
             $(".chzn-select").chosen();
         });
 
-        $("#submit").on("click", function(){
+        $("#submit").on("click", function () {
             console.log($(".chzn-select"));
             console.log($(".chzn-select").length);
 
             var input = $(".chzn-select");
             var inputArray = [];
 
-                for(let i = 0; i < input.length; i++) {
-                    inputArray.push(input[i].value);
-                }
-            
+            for (let i = 0; i < input.length; i++) {
+                inputArray.push(input[i].value);
+            }
+
             console.log(inputArray);
         })
     </script>
