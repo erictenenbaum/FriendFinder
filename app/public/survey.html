@@ -2,133 +2,252 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Chosen didn't play well with bootstrap here is what is needed to make chosen work -->
+    <!--    <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
     <script src="http://code.jquery.com/jquery-1.8.3.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.jquery.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.4.2/chosen.css"> -->
 </head>
 
 <body>
 
-    <h2>Question 1</h2>
-    <p>How much do you enjoy watching sports</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option disabled selected>Select an Option</option>
-        <option value="1">1 (Strongly Disagree)</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5 (Strongly Agree)</option>
-    </select>
-    <h2>Question 2</h2>
-    <p>How much do you like comedy shows</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option disabled selected>Select an Option</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 3</h2>
-    <p>How much do you like buffalo wings</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 4</h2>
-    <p>How much do you like Seinfeld</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 5</h2>
-    <p>How much do you like the office</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 6</h2>
-    <p>How much do you like Pizza</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 7</h2>
-    <p>How much do you like Bacon</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 8</h2>
-    <p>How much do you like cheese</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 9</h2>
-    <p>How much do you like coding</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    <h2>Question 10</h2>
-    <p>How much do you like fortnite</p>
-    <select class="chzn-select" name="faculty" style="width:200px;">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    </br>
-    </br>
-
-    <button id="submit">Submit</button>
-
+    <div class="container">
+        <h1><strong>Survey Questions</strong></h1>
+        <hr>
+        <h2>About You</h2>
+        <form>
+             <div class="form-group">
+    <label for="nameinput">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Picture Link</label>
+    <input type="text" class="form-control" id="pictureLink" placeholder="">
+  </div>
+        </form>
+        <hr>
+        
+        <h2>Question 1</h2>
+        <p>How much do you enjoy watching sports</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 2</h2>
+        <p>How much do you like comedy shows</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 3</h2>
+        <p>How much do you like buffalo wings</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 4</h2>
+        <p>How much do you like Seinfeld</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 5</h2>
+        <p>How much do you like the office</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 6</h2>
+        <p>How much do you like Pizza</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 7</h2>
+        <p>How much do you like Bacon</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 8</h2>
+        <p>How much do you like cheese</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 9</h2>
+        <p>How much do you like coding</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        <h2>Question 10</h2>
+        <p>How much do you like fortnite</p>
+        <select class="chzn-select" name="faculty" style="width:200px;">
+            <option disabled selected>Select an Option</option>
+            <option value="1">1 (Strongly Disagree)</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5 (Strongly Agree)</option>
+        </select>
+        </br>
+        </br>
+        <!-- <button id="submit">Submit</button> -->
+        <!-- Button trigger modal -->
+        <button type="button" id="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+            Submit
+        </button>
+        <!--    <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="message">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </div>
     <script type="text/javascript">
-        $(function () {
-            $(".chzn-select").chosen();
-        });
+    // Chosen didn't play well with bootstrap because of jquery version required
+    // $(function () {
+    //     $(".chzn-select").chosen();
+    // });
 
-        $("#submit").on("click", function () {
-            console.log($(".chzn-select"));
-            console.log($(".chzn-select").length);
+    $("#submit").on("click", function() {
+        console.log($(".chzn-select"));
+        console.log($(".chzn-select").length);
 
-            var input = $(".chzn-select");
-            var inputArray = [];
+        console.log($("#name").val());
+        console.log($("#pictureLink").val());
+       
 
-            for (let i = 0; i < input.length; i++) {
-                inputArray.push(input[i].value);
+        var input = $(".chzn-select");
+        var inputArray = [];
+
+        for (let i = 0; i < input.length; i++) {
+
+            // var x = Number.parseInt(input[i].value);
+
+            if (input[i].value === "Select an Option") {
+
+                console.log("Invalid selection");
+            } else {
+                inputArray.push(Number.parseInt(input[i].value));
             }
 
-            console.log(inputArray);
-        })
+            // console.log(typeof x);
+
+        }
+
+        console.log(inputArray);
+
+
+        var surveyFriend =  {
+             "name": $("#name").val().trim(),
+            "photo": $("#pictureLink").val(),
+            "scores": inputArray   
+
+        }     
+
+        var jsonFriend = JSON.stringify(surveyFriend); 
+
+
+
+            
+
+        console.log(surveyFriend);
+
+
+        if (inputArray.length === 10 && !($("#name").val() === "") && !($("#pictureLink").val() === "")) {
+            console.log("success");
+
+            $.post("/api/friends", jsonFriend).then(function(data) {
+                console.log(data);
+            })
+        } else {
+            console.log("fail");
+
+            $("#exampleModalLongTitle").html("Incomplete Survey")
+            $("#message").html("Please enter your name, provide a link to a picture of yourself and answer all questions");
+            // $("#exampleModalLongTitle").css(color: red);
+
+
+
+        }
+    })
     </script>
-
-
 </body>
 
 </html>
