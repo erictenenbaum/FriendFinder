@@ -1,13 +1,13 @@
 var friendsArray = [
 {
 	name: "Rachel Green",
-	photo: "http://www.look.co.uk/beauty/friends-rachel-green-hair-beauty-moments-549868",
+		photo: "https://vignette.wikia.nocookie.net/friends/images/1/1b/Rachel_haircut.jpg/revision/latest?cb=20150503022311rs",
 	scores: [1, 3, 4, 2, 2, 3, 1, 5, 2, 2 ]
 },
 {
-	name: "Jim Halpert",
-	photo: "http://www.telegraph.co.uk/men/the-filter/11097176/Why-the-men-from-Friends-are-no-friends-of-mine.html",
-	scores: [4, 3, 1, 2, 3, 3, 3, 5, 2, 7 ]
+	name: "Joey Tribiani",
+	photo: "http://www.neontommy.com/sites/default/files/Screen%20Shot%202015-02-11%20at%205.04.41%20PM.png?1423704277",
+	scores: [4, 3, 1, 2, 3, 3, 3, 5, 2, 5 ]
 }]
 
 module.exports = friendsArray;

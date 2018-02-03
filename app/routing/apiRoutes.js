@@ -1,3 +1,4 @@
+
 var friendsData = require("../data/friends.js");
 
 module.exports = function(app) {
@@ -20,14 +21,17 @@ module.exports = function(app) {
 
         // console.log(tempFriend.friend)
 
-        // var newFriend = {
-        // 	name: req.body.name,
-        // 	photo: req.body.photo
-        // 	// scores: req.body.scores[]
-        // }
-
-        // console.log(newFriend);
-
+        var newFriend = {
+        	name: req.body.name,
+        	photo: req.body.photo,
+        	scores: req.body['scores[]']
+        }
+        newFriend.scores = newFriend.scores.map(function(score){
+            return parseInt(score)
+        })
+           
+           
+        console.log(newFriend, "this is our newFriend");
 
         // Empty array for the to push 
         var totalMatches = [];
@@ -36,89 +40,54 @@ module.exports = function(app) {
             return accumulator + currentValue
         }
 
-
-
-
         	// FROM HERE
         
+        let friendPromise = new Promise(function(resolve, reject) {
 
-        // let friendPromise = new Promise(function(resolve, reject) {
+        	for (let i = 0; i < friendsData.length; i++) {
 
-        // 	for (let i = 0; i < friendsData.length; i++) {
+                    var matchScore = [];
 
-        //             var matchScore = [];
+                    for (let y = 0; y < newFriend.scores.length; y++) {
+                        //y is newfriend ////////i is friendData from friends.js
+                        matchScore.push(Math.abs(newFriend.scores[y] - friendsData[i].scores[y]));
+                    }
+                    totalMatches.push(matchScore)
+            }
 
-        //             for (let y = 0; y < newFriend.scores.length; y++) {
-        //                 matchScore.push(Math.abs(newFriend.scores[y] - friendsData[i].scores[y]));
+                console.log(totalMatches, "this is our total matches");
 
-        //             }
+                var chosenFriendArray = [];
 
-        //             totalMatches.push(matchScore)
-        //         }
+                for (let z = 0; z < totalMatches.length; z++) {
+                    chosenFriendArray.push(totalMatches[z].reduce(reducer));
+                }
 
-        //         console.log(totalMatches);
+                var matchedFriendIndex = Math.min.apply(null, chosenFriendArray);
+                console.log(matchedFriendIndex);
+                var friendsDataIndex = chosenFriendArray.indexOf(matchedFriendIndex);
+                console.log(friendsDataIndex);
 
-        //         var chosenFriendArray = [];
-
-        //         for (let z = 0; z < totalMatches.length; z++) {
-        //             chosenFriendArray.push(totalMatches[z].reduce(reducer));
-        //         }
-
-        //         var matchedFriendIndex = Math.min.apply(null, chosenFriendArray);
-
-        //         var friendsDataIndex = chosenFriendArray.indexOf(matchedFriendIndex);
-
-
-
-        //         res.json(friendsData[friendsDataIndex]);
-
-        //         let foundFriend = true;
-
-        //         if (foundFriend){
-        //         	resolve("You got a friend in me");
-        //         }
-        //         else {
-        //         	reject();
-        //         }
-
-        // });
-
-
-        // friendPromise.then(function(fromResolved){
-        // 	console.log(fromResolved);
-        // 	friendsData.push(newFriend);
-
-        // });
-
-
-
-
-        // TO HERE
-
-
-        
-
+                let foundFriend = true;
                 
-
-                res.setHeader("Content-Type", "application/json");
-
-                res.end(JSON.stringify({
-                    success: true
-                }));
-
+                if (friendsDataIndex != -1){
+                    resolve(friendsData[friendsDataIndex]);
+                }
+                else {
+                    reject(false);
+                }
+                
+            });
             
-
-
-        
-
-
-      
-
-        
-
-        
-
-
+        friendPromise.then(function(fromResolved){
+            friendsData.push(newFriend);  
+            console.log(fromResolved);
+            if(fromResolved == false){
+                res.send("no match");
+            }else{
+                res.json(fromResolved);                
+            }
+        });
 
     });
 }
