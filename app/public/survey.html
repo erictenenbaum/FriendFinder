@@ -146,85 +146,91 @@
                     </div>
                     <div class="modal-body" id="message">
                         <img src="" alt="someImg" id="userImg" style="max-height: 300px; max-width: 300px">
-                        <div  id="failMessage">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        <div id="failMessage">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                        </div>
                     </div>
                 </div>
             </div>
+            <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         </div>
-        <script src="http://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    </div>
-    <script>
-    $("#submit").on("click", function() {
-        console.log($(".chzn-select"));
-        console.log($(".chzn-select").length);
+        <script>
+        $("#submit").on("click", function() {
+            console.log($(".chzn-select"));
+            console.log($(".chzn-select").length);
 
-        console.log($("#name").val());
-        console.log($("#pictureLink").val());
+            console.log($("#name").val());
+            console.log($("#pictureLink").val());
 
+            // grabs the values of all the questions which have the chzn-select class
+            var input = $(".chzn-select");
+            var inputArray = [];
 
-        var input = $(".chzn-select");
-        var inputArray = [];
+            // iterates through the 10 value objects and checks to make sure all questions were answered
+            // if they were all answered they are all converted to a number and pushed into an array representing the scores
+            for (let i = 0; i < input.length; i++) {
 
-        for (let i = 0; i < input.length; i++) {
+                if (input[i].value === "Select an Option") {
 
-            if (input[i].value === "Select an Option") {
+                    console.log("Invalid selection");
+                } else {
+                    inputArray.push(Number.parseInt(input[i].value));
+                }
 
-                console.log("Invalid selection");
-            } else {
-                inputArray.push(Number.parseInt(input[i].value));
             }
 
-        }
+            console.log(inputArray);
 
-        console.log(inputArray);
+            // Grabs the values of the name and photo, while using our input array of scores
+            var surveyFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#pictureLink").val(),
+                scores: inputArray
 
-
-        var surveyFriend = {
-            name: $("#name").val().trim(),
-            photo: $("#pictureLink").val(),
-            scores: inputArray
-
-        }
+            }
 
 
-        console.log(surveyFriend);
+            console.log(surveyFriend);
+
+            // data validation to check if user entered a name and some input in the picture link textbox
+            // Eventually would like to check to see if an actual image was provide
+            if (inputArray.length === 10 && !($("#name").val() === "") && !($("#pictureLink").val() === "")) {
+                console.log("success");
+
+                // ajax post to the server passing in our surveyFriend object
+
+                $.post("/api/friends", surveyFriend).then(function(data) {
+                    console.log(data);
+                    // $("#Failmessage").hide();  
+
+                    // data is an object of the friend our user was matched with
+                    // use jQuery to display the name and phot of the matched friend
+                    $("#userImg").show();
+                    $("#exampleModalLongTitle").text(data.name)
+                    $("#exampleModalLongTitle").attr("style", "font-size: 35px");
+                    $("#userImg").attr("src", data.photo)
+                });
+            } else {
+                console.log("fail");
+
+                // data validation modal in the event the user doesn't answer all the survey questions 
+                // or provide input for name and photo link
+                $("#userImg").hide();
+                $("#exampleModalLongTitle").html("Incomplete Survey!")
+                $("#exampleModalLongTitle").attr("style", "color: red; font-size: 25px");
 
 
-        if (inputArray.length === 10 && !($("#name").val() === "") && !($("#pictureLink").val() === "")) {
-            console.log("success");
-
-            $.post("/api/friends", surveyFriend).then(function(data) {
-                console.log(data);
-                // $("#Failmessage").hide();           
-                $("#userImg").show();
-                $("#exampleModalLongTitle").text(data.name)
-                $("#exampleModalLongTitle").attr("style", "font-size: 35px");
-                $("#userImg").attr("src", data.photo)
-            });
-        } else {
-            console.log("fail");
-            
-            // $("#message").show();
-            $("#userImg").hide();
-            $("#exampleModalLongTitle").html("Incomplete Survey!")
-            $("#exampleModalLongTitle").attr("style", "color: red; font-size: 25px");
-            // $("#message").html("Please do the Following: " + "<ol>" + "<li>" + "Provide your name" + "</li>" +
-            //     "<li>" + "Provide a link to a picture of yourself" + "</li>" +
-            //     "<li>" + "Answer all questions" + "</li>" + "</ol>");
-            // $("#message").attr("style", "font-size: 25px");
 
 
 
-
-        }
-    })
-    </script>
+            }
+        })
+        </script>
 </body>
 
 </html>
